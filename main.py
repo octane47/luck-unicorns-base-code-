@@ -102,7 +102,34 @@ while play_again == "":
   # user gets a unicorn (add $4 to balance)
   if 1 <= chosen_num <=5:
     chosen = "unicorn"
+    prize_decoration = "!"
     balance += 4
+  
+  #if the random # is between 6 and 36
+  # user gets a donkeu (subract $1 from balance)
+  elif 6 <= chosen_num <= 36:
+    chosen = "donkey"
+    prize_decoration = "D"
+    balance -=1
+  
+  #the token is either a hose or zebra...
+  #in both cases, ubtract $0.50 from the balance
+  else:
+    #if the number is even,set the chosen
+    #item to horse
+    if chosen_num % 2 == 0:
+      chosen= "horse"
+      prize_decoration = "~-"
+
+      #otherwise set it to a zebra
+    else:
+      chosen = "zebra"
+      prize_decoration =">>"
+    balance -= 0.5
+  
+  outcome = "you got a {}. Your balance is" \ "${:.2f}".format(chosen, balance)
+
+  statment_generator(outcome, prize_decoration)
     
   if balance <1:
     play_again = "xxx"
