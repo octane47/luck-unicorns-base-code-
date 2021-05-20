@@ -1,0 +1,23 @@
+import random
+
+tokens = ["coins", "cash", "food", "car"]
+balance = 100
+
+# testing token summoning
+
+for items in range(0, 20):
+    chosen = random.choice(tokens)
+    print(chosen, end='\t')
+
+    #adjust balance
+    if chosen == " ":
+        balance =+ 1
+    elif chosen == "food ":
+        balance =- 1
+    else:
+        balance =- 0.5
+
+
+        #output
+    print ("Token {}, balance ${}" .format(chosen, balance))
+
